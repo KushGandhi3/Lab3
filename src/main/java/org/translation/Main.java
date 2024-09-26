@@ -91,6 +91,9 @@ public class Main {
             countriesNames.add(converter.fromCountryCode(country));
         }
 
+        // Sorting Country Names
+        Collections.sort(countriesNames);
+
         // Printing Country Names
         for (String country : countriesNames) {
             System.out.println(country);
