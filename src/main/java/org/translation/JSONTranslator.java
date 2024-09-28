@@ -18,7 +18,6 @@ import org.json.JSONObject;
  */
 public class JSONTranslator implements Translator {
 
-    // TODO Task: pick appropriate instance variables for this class
     private Map<String, Map<String, String>> countrylangs = new HashMap<>();
     private ArrayList<String> countrycodes = new ArrayList<>();
 
@@ -41,9 +40,6 @@ public class JSONTranslator implements Translator {
             String jsonString = Files.readString(Paths.get(getClass().getClassLoader().getResource(filename).toURI()));
 
             JSONArray jsonArray = new JSONArray(jsonString);
-
-            // TODO Task: use the data in the jsonArray to populate your instance variables
-            //            Note: this will likely be one of the most substantial pieces of code you write in this lab.
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject countryobj = jsonArray.getJSONObject(i);
@@ -69,8 +65,6 @@ public class JSONTranslator implements Translator {
 
     @Override
     public List<String> getCountryLanguages(String country) {
-        // TODO Task: return an appropriate list of language codes,
-        //            but make sure there is no aliasing to a mutable object
         Map<String, String> languages = countrylangs.get(country);
         if (languages == null) {
             return new ArrayList<>();
@@ -80,14 +74,11 @@ public class JSONTranslator implements Translator {
 
     @Override
     public List<String> getCountries() {
-        // TODO Task: return an appropriate list of country codes,
-        //            but make sure there is no aliasing to a mutable object
         return new ArrayList<>(countrycodes);
     }
 
     @Override
     public String translate(String country, String language) {
-        // TODO Task: complete this method using your instance variables as needed
         Map<String, String> translations = countrylangs.get(country);
         if (translations == null) {
             return null;

@@ -25,9 +25,6 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        // TODO Task: once you finish the JSONTranslator,
-        //            you can use it here instead of the InLabByHandTranslator
-        //            to try out the whole program!
         Translator translator = new JSONTranslator();
         // Translator translator = new InLabByHandTranslator();
 
@@ -45,24 +42,14 @@ public class Main {
             String country = promptForCountry(translator);
             LanguageCodeConverter lconverter = new LanguageCodeConverter();
             CountryCodeConverter cconverter = new CountryCodeConverter();
-            // TODO CheckStyle: The String "quit" appears 3 times in the file.
-            // TODO Checkstyle: String literal expressions should be on the left side of an equals comparison
             if (QUIT.equals(country)) {
                 break;
             }
-            // TODO Task: Once you switch promptForCountry so that it returns the country
-            //            name rather than the 3-letter country code, you will need to
-            //            convert it back to its 3-letter country code when calling promptForLanguage
             String countrycode = cconverter.fromCountry(country);
             String language = promptForLanguage(translator, countrycode);
             if (QUIT.equals(language)) {
                 break;
             }
-            // TODO Task: Once you switch promptForLanguage so that it returns the language
-            //            name rather than the 2-letter language code, you will need to
-            //            convert it back to its 2-letter language code when calling translate.
-            //            Note: you should use the actual names in the message printed below though,
-            //            since the user will see the displayed message.
             String languagecode = lconverter.fromLanguage(language);
             System.out.println(country + " in " + language + " is " + translator
                     .translate(countrycode, languagecode));
@@ -81,10 +68,6 @@ public class Main {
         List<String> countries = translator.getCountries();
         List<String> countriesNames = new ArrayList<>();
         CountryCodeConverter converter = new CountryCodeConverter();
-        // TODO Task: replace the following println call, sort the countries alphabetically,
-        //            and print them out; one per line
-        //      hint: class Collections provides a static sort method
-        // TODO Task: convert the country codes to the actual country names before sorting
 
         // Converting Country Codes to Country Names
         for (String country : countries) {
@@ -109,9 +92,6 @@ public class Main {
     // Note: CheckStyle is configured so that we don't need javadoc for private methods
     private static String promptForLanguage(Translator translator, String country) {
 
-        // TODO Task: replace the line below so that we sort the languages alphabetically and print them out;
-        //  one per line
-        // TODO Task: convert the language codes to the actual language names before sorting
         List<String> languages = translator.getCountryLanguages(country);
         List<String> languageNames = new ArrayList<>();
         LanguageCodeConverter converter = new LanguageCodeConverter();
